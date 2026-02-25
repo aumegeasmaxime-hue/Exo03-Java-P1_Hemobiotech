@@ -3,6 +3,7 @@ package com.hemebiotech.analytics;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Objects;
 
 public class AnalyticsCounter {
@@ -68,6 +69,8 @@ public class AnalyticsCounter {
 			}
 		}
 		reader.close();
+
+		Collections.sort(symptomList);
 		System.out.println(symptomList);
 		System.out.println(symptomListComplete);
 
@@ -77,7 +80,7 @@ public class AnalyticsCounter {
 					count++;									//compete le nombre d'element identique
 				}
 			}
-			//System.out.println(symptomList.get(i) + " " + (count-temp));
+			System.out.println(symptomList.get(i) + " " + (count-temp));
 			writer.write(symptomList.get(i) + " est present : " + (count-temp) + " fois dans le fichier txt" +"\n");
 			temp = count;
 		}
