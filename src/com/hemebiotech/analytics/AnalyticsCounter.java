@@ -71,19 +71,17 @@ public class AnalyticsCounter {
 		System.out.println(symptomList);
 		System.out.println(symptomListComplete);
 
-		for(int i = 0;i < symptomList.size(); i++){
-			for(String symptom : symptomListComplete) {
-				if (symptomList.get(i).equals(symptom)) {
-					count++;
+		for(int i = 0;i < symptomList.size(); i++){		//permet iteration de la premiere liste et permet une boucle
+			for(String symptom : symptomListComplete) {			//permet iteration de la second list
+				if (symptomList.get(i).equals(symptom)) {		//compare le 2 listes
+					count++;									//compete le nombre d'element identique
 				}
 			}
-			System.out.println(symptomList.get(i) + " " + (count-temp));
+			//System.out.println(symptomList.get(i) + " " + (count-temp));
 			writer.write(symptomList.get(i) + " est present : " + (count-temp) + " fois dans le fichier txt" +"\n");
 			temp = count;
 		}
 		writer.close();
 	}
 }
-
-// methode cherche chaque element du fichier txt different puis les ranges dans une liste
 
