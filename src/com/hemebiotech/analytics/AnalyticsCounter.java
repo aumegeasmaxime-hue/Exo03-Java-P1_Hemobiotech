@@ -87,6 +87,8 @@ public class AnalyticsCounter {
 
 		}
 		reader.close();
+		writer.write(symptomListMap + "\n");
+		writer.close();
 		System.out.println(symptomListMap);
 	}
 }
