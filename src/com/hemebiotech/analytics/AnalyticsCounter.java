@@ -1,10 +1,7 @@
 package com.hemebiotech.analytics;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Objects;
+import java.util.*;
 
 public class AnalyticsCounter {
 	private static int headacheCount = 0;    // initialize to 0
@@ -53,38 +50,44 @@ public class AnalyticsCounter {
 	}
 
 	public static void findDifferentSymptom() throws IOException {
+		ReadSymptomDataFromFile listAllSymptom = new ReadSymptomDataFromFile("symptoms.txt"); //instensiation classe pour acces a la methode getSymptom
 		BufferedReader reader = new BufferedReader(new FileReader("symptoms.txt"));
 		String line;
 		ArrayList<String> symptomList = new ArrayList<>();
-		ArrayList<String> symptomListComplete = new ArrayList<>();
 		FileWriter writer = new FileWriter("result.out");
+		Map<String , Integer> symptomListMap = new TreeMap<>();
 
 		int count = 0;
 		int temp = 0;
-
-		while ((line = reader.readLine()) != null) { 	//parcours du .txt
-			symptomListComplete.add(line);
+		/*
+		while ((line = reader.readLine()) != null) {	//parcours du .txt
 			if (!symptomList.contains(line)) {			//comparaison de la list pour eviter les doublons
 				symptomList.add(line);					//ajout du nouveau symptom a la liste
 			}
 		}
-		reader.close();
+		//reader.close();
 
 		Collections.sort(symptomList); //permet d'ordonner un arreyList
-		System.out.println(symptomList);
-		System.out.println(symptomListComplete);
+
 
 		for(int i = 0;i < symptomList.size(); i++){		//permet iteration de la premiere liste et permet une boucle
-			for(String symptom : symptomListComplete) {			//permet iteration de la second list
+			for(String symptom : listAllSymptom.GetSymptoms()) {			//permet iteration de la second list
 				if (symptomList.get(i).equals(symptom)) {		//compare le 2 listes
 					count++;									//compete le nombre d'element identique
 				}
 			}
-			System.out.println(symptomList.get(i) + " " + (count-temp));
+
 			writer.write(symptomList.get(i) + " est present : " + (count-temp) + " fois dans le fichier txt" +"\n");
 			temp = count;
 		}
 		writer.close();
+		*/
+		while ((line = reader.readLine()) != null) {
+			symptomListMap.put(line ,symptomListMap.getOrDefault(line , 0)+1); //getOrDefault(line, 0)Si la clé existe → récupère la valeur Sinon → retourne 0
+
+		}
+		reader.close();
+		System.out.println(symptomListMap);
 	}
 }
 
