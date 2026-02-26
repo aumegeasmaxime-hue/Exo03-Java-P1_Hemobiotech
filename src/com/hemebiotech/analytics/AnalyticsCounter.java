@@ -70,7 +70,7 @@ public class AnalyticsCounter {
 		}
 		reader.close();
 
-		Collections.sort(symptomList);
+		Collections.sort(symptomList); //permet d'ordonner un arreyList
 		System.out.println(symptomList);
 		System.out.println(symptomListComplete);
 
