@@ -5,6 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /** Simple brute force implementation */
 
@@ -39,6 +42,20 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 			}
 		}
 		return result;
+	}
+	@Override
+	public TreeMap<String,Integer> getSymptomCounts(List<String> symptoms){
+		if(symptoms == null){
+			throw new IllegalArgumentException("the symptom list cannot be null");
+		}
+		return symptoms.stream()
+				.collect(
+						Collectors.groupingBy(
+								Function.identity(),
+								TreeMap::new,
+								Collectors.summingInt(value -> 1)
+						)
+				);
 	}
 
 

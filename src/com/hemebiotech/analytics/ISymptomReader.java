@@ -1,6 +1,7 @@
 package com.hemebiotech.analytics;
 
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Anything that will read symptom data from a source
@@ -32,4 +33,6 @@ public interface ISymptomReader {
 	 * ; les doublons sont possibles/probables.
 	 */
 	List<String> GetSymptoms ();
+
+	TreeMap<String,Integer> getSymptomCounts(List<String> symptoms);
 }

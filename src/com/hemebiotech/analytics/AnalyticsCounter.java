@@ -2,6 +2,9 @@ package com.hemebiotech.analytics;
 
 import java.io.*;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class AnalyticsCounter {
 	private static int headacheCount = 0;    // initialize to 0
@@ -93,5 +96,8 @@ public class AnalyticsCounter {
 		writer.close();
 		System.out.println(symptomListMap);
 	}
+	// stream version
+
+
 }
 
