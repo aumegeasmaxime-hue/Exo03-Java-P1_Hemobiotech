@@ -10,7 +10,7 @@ public class AnalyticsCounter {
 
 
 	public static void main(String args[]) throws Exception {
-
+		/* METHODE fourni en debut exercice
 		// first get input
 		//BufferedReader est une classe qui permet de lire du texte
 		//Elle est utilisée pour lire du texte à partir d’un flux de caractères (le fichier txt)
@@ -44,7 +44,7 @@ public class AnalyticsCounter {
 		writer.write("rash: " + rashCount + "\n");
 		writer.write("dialated pupils: " + pupilCount + "\n");
 		//writer.close();
-
+		*/
 		findDifferentSymptom();
 
 	}
@@ -59,7 +59,7 @@ public class AnalyticsCounter {
 
 		int count = 0;
 		int temp = 0;
-		/*
+		/* methode 01
 		while ((line = reader.readLine()) != null) {	//parcours du .txt
 			if (!symptomList.contains(line)) {			//comparaison de la list pour eviter les doublons
 				symptomList.add(line);					//ajout du nouveau symptom a la liste
@@ -82,6 +82,8 @@ public class AnalyticsCounter {
 		}
 		writer.close();
 		*/
+
+		// methode 02
 		while ((line = reader.readLine()) != null) {
 			symptomListMap.put(line ,symptomListMap.getOrDefault(line , 0)+1); //getOrDefault(line, 0)Si la clé existe → récupère la valeur Sinon → retourne 0
 
