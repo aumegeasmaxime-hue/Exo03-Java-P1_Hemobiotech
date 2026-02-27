@@ -43,6 +43,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		}
 		return result;
 	}
+	// stream version
+	/*
 	@Override
 	public TreeMap<String,Integer> getSymptomCounts(List<String> symptoms){
 		if(symptoms == null){
@@ -57,6 +59,16 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 						)
 				);
 	}
+	*/
 
+	//merge Version
+	@Override
+	public TreeMap<String,Integer> getSymptomCounts(List<String> symptoms){
+		TreeMap<String,Integer> symptomsCount = new TreeMap<>();
+		symptoms.forEach(
+				s ->symptomsCount.merge(s,1,Integer::sum)
+		);
+		return  symptomsCount;
+	}
 
 }

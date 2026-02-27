@@ -96,7 +96,7 @@ public class AnalyticsCounter {
 		writer.close();
 		System.out.println(symptomListMap);
 	}
-	// stream version
+
 
 
 }
